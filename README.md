@@ -1,2 +1,1 @@
-# Katie-sLegoCatalogue
 # KBLegoCatalogue
