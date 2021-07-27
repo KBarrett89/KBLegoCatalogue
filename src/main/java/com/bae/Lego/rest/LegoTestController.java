@@ -1,4 +1,4 @@
-package com.bae.Lego;
+package com.bae.Lego.rest;
 
 import java.util.List;
 
