@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,5 +50,12 @@ public class LegoTestController {
 	@GetMapping("/getLegoKit/{id}")
 	public Lego getLegoKit(@PathVariable int id) {
 		return this.service.getLegoKit(id);
+	}
+
+	@PutMapping("/replaceLegoKit/{id}")
+	public ResponseEntity<Lego> replaceLegoKit(@PathVariable int id, @RequestBody Lego newLegoKit) {
+		Lego body = this.service.replaceLegoKit(id, newLegoKit);
+		return new ResponseEntity<Lego>(body, HttpStatus.ACCEPTED);
+
 	}
 }
