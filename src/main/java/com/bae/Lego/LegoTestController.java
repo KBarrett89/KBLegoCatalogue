@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,13 @@ public class LegoTestController {
 	public ResponseEntity<Lego> replaceLegoKit(@PathVariable int id, @RequestBody Lego newLegoKit) {
 		Lego body = this.service.replaceLegoKit(id, newLegoKit);
 		return new ResponseEntity<Lego>(body, HttpStatus.ACCEPTED);
+
+	}
+
+	@DeleteMapping("/deleteLegoKit/{id}")
+	public ResponseEntity<String> deleteLegoKit(@PathVariable int id) {
+		String body = this.service.deleteLegoKit(id);
+		return new ResponseEntity<String>(body, HttpStatus.NO_CONTENT);
 
 	}
 }
