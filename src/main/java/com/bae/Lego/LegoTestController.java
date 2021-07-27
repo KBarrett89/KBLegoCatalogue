@@ -45,4 +45,9 @@ public class LegoTestController {
 	public List<Lego> getByKitName(@PathVariable String kitName) {
 		return this.service.getByKitName(kitName);
 	}
+
+	@GetMapping("/getLegoKit/{id}")
+	public Lego getLegoKit(@PathVariable int id) {
+		return this.service.getLegoKit(id);
+	}
 }
