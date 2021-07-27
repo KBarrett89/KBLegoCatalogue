@@ -13,9 +13,9 @@ public class LegoServiceList implements LegoKitService {
 	private List<Lego> legoKits = new ArrayList<>();
 
 	@Override
-	public void createLegoKit(Lego lego) {
-		System.out.println(lego);
+	public Lego createLegoKit(Lego lego) {
 		this.legoKits.add(lego);
+		return this.legoKits.get(this.legoKits.size() - 1);
 	}
 
 	@Override
@@ -39,6 +39,12 @@ public class LegoServiceList implements LegoKitService {
 		this.legoKits.remove(id);
 
 		return "Deleted Lego Kit at index: " + id;
+	}
+
+	@Override
+	public List<Lego> getByKitName(String kitName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
