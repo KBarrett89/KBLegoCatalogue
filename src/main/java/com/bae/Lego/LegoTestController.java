@@ -1,5 +1,7 @@
 package com.bae.Lego;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,5 +33,10 @@ public class LegoTestController {
 	public ResponseEntity<Lego> createLegoKit(@RequestBody Lego LegoKit) {
 		Lego created = this.service.createLegoKit(LegoKit);
 		return new ResponseEntity<>(created, HttpStatus.CREATED);
+	}
+
+	@GetMapping("/getAllLegoKits")
+	public List<Lego> getAllLegoKits() {
+		return this.service.getAllLegoKits();
 	}
 }
