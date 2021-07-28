@@ -77,6 +77,17 @@ const getLegoKitById = () => {
             getByIdOutput.innerHTML = "";
             renderLego(LegoKit, getByIdOutput);
         }).catch(err => console.log(err));
+
+    }
+
+    const getLegoKitByKitName = () => {
+        axios.get(`${baseURL}/getLegoKit/${legoKitName.value}`)
+            .then(res => {
+                const LegoKit = res.data;
+                getByIdOutput.innerHTML = "";
+                renderLego(LegoKit, getByIdOutput);
+            }).catch(err => console.log(err));
+
 }
 
 document.querySelector("section#postSection > form").addEventListener('submit', (e) => {

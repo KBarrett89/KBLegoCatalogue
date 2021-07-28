@@ -53,6 +53,7 @@
             </section>
             <section class="col-9">
                 <h2><u>GET</u></h2>
+
                 <section id="getByIdSection">
                     <h3>GET BY ID</h3>
                     <label for="LegoId" class="form-label">ID:</label>
@@ -63,6 +64,18 @@
                     <div id="getByIdOutput">
                     </div>
                 </section>
+
+                <section id="getByKitNameSection">
+                    <h3>GET BY KIT NAME</h3>
+                    <label for="LegoId" class="form-label">kitName:</label>
+                    <div class="row">
+                        <input type="number" name="LegoId" id="LegoId" class="form-control col-10" min="1">
+                        <button onclick="getLegoKitByName();" class="btn btn-primary col-2">GET</button>
+                    </div>
+                    <div kitName="getByKitNameOutput">
+                    </div>
+                </section>
+
             <section id="getAllSections">
                 <h3>GET ALL</h3>
                 <div id="getAllOutput" class="card-group row row-cols-3 g-4">
