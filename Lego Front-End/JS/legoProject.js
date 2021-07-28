@@ -32,6 +32,7 @@ const getAllLegoKits = () => {
 
 const renderLego = (legoKit, outputDiv) => {
     const newLegoKit = document.createElement('div');
+    newLegoKit.classList.add("col");
     newLegoKit.classList.add("card");
 
     const seriesName = document.createElement("p");
@@ -52,7 +53,7 @@ const renderLego = (legoKit, outputDiv) => {
 
     const deleteButton = document.createElement('button');
     deleteButton.innerText = "DELETE";
-
+    deleteButton.classList.add("btn", "btn-primary");
     deleteButton.addEventListener('click', () => deleteLegoKit(legoKit.id))
 
     newLegoKit.appendChild(deleteButton);
