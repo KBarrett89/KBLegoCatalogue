@@ -71,17 +71,18 @@ const renderLego = (legoKit, outputDiv) => {
     newLegoKit.appendChild(seriesreleaseYearBox);
 
 
-    const updateButton = document.createElement('submit');
+    const updateButton = document.createElement("button");
+    updateButton.type = "submit";
     updateButton.innerText = "UPDATE";
     updateButton.classList.add("btn", "btn-primary");
-    updateButton.addEventListener('click', () => replaceLegoKit(legoKit.id))
+    updateButton.addEventListener('click', (e) => replaceLegoKit(legoKit.id, e));
     newLegoKit.appendChild(updateButton);
 
 
     const deleteButton = document.createElement('button');
     deleteButton.innerText = "DELETE";
     deleteButton.classList.add("btn", "btn-primary");
-    deleteButton.addEventListener('click', () => deleteLegoKit(legoKit.id))
+    deleteButton.addEventListener('click', () => deleteLegoKit(legoKit.id));
     newLegoKit.appendChild(deleteButton);
 
 
@@ -89,6 +90,30 @@ const renderLego = (legoKit, outputDiv) => {
 
     const gap = document.createElement('br');
     outputDiv.appendChild(gap);
+}
+
+const replaceLegoKit = (id, e) => {
+    e.preventDefault(); // stops the form submitting in the default way
+
+    console.log("in here"); //testing these functions are called
+    console.log(e);
+
+    const form = e.target;
+
+    const data = {
+        seriesName: form.seriesName.value,
+        kitNumber: form.kitNumber.value,
+        kitName: form.kitName.value,
+        releaseYear: form.releaseYear.value
+    }
+
+    axios.put(`${baseURL}/replaceLegoKit/${id}`, data)
+        .then(res => {
+            console.log(res);
+            getAllLegoKits();
+            alert("Successfully Updated Lego Kit!")
+        }).catch(err => console.log(err));
+
 }
 
 const deleteLegoKit = id => {
