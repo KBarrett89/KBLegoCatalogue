@@ -11,31 +11,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="../CSS/styles.css">
 
-</head>
-
-<body>
 
     <style>
-        body {
-            background-image: url(../legoBoard.jpg);
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
+       
         form>input {
             display: block;
         }
     </style>
+</head>
 
-    <h1 style="font-size:60px;  text-align:center;  font-family:veranda; color:rgb(0, 0, 0);">
+
+<h1 style="font-size:60px;  text-align:center;  font-family:veranda; color:rgb(0, 0, 0);">
         <b>Lego Catalogue</b>
     </h1>
     <div>
 
+<body class="container">
         <main class="row">
             <section id="postSection" class="col-3">
                 <h2><u>POST</u></h2>
@@ -56,10 +49,8 @@
                     <button type="reset" class="btn btn-primary">Reset</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
 
-
                 </form>
             </section>
-
             <section class="col-9">
                 <h2><u>GET</u></h2>
                 <section id="getByIdSection">
@@ -72,14 +63,14 @@
                     <div id="getByIdOutput">
                     </div>
                 </section>
-            </section>
             <section id="getAllSections">
                 <h3>GET ALL</h3>
                 <div id="getAllOutput" class="card-group row row-cols-3 g-4">
                 </div>
             </section>
+            </section>
         </main>
-        <script src="lego.js"></script>
+        <script src="/JS/legoProject.js"></script>
 </body>
 
 </html>

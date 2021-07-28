@@ -28,8 +28,6 @@ const getAllLegoKits = () => {
 }
 
 
-
-
 const renderLego = (legoKit, outputDiv) => {
     const newLegoKit = document.createElement('div');
 
