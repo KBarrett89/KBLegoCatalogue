@@ -53,7 +53,7 @@ public class LegoControllerIntegrationTest {
 		System.out.println(testLegAsJSON);
 
 		// body, method, address and the content-type header
-		RequestBuilder request = post("/CreateLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
+		RequestBuilder request = post("/createLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
 
 		// check the response body and status
 
