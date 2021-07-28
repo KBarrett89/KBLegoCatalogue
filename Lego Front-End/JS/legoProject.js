@@ -12,9 +12,10 @@ console.log("Have we got a response yet?");
 
 const getAllSection = document.querySelector("#getAllSection");
 const getByIdOutput = document.querySelector("#getByIdOutput");
-
+const getByNameOutput = document.querySelector("#getByNameOutput");
 
 const legoId = document.querySelector("#LegoId");
+const kitName = document.querySelector("#getKitName");
 
 const getAllLegoKits = () => {
     axios.get(`${baseURL}/getAllLegoKits`)
@@ -78,17 +79,16 @@ const getLegoKitById = () => {
             renderLego(LegoKit, getByIdOutput);
         }).catch(err => console.log(err));
 
-    }
-
-    const getLegoKitByKitName = () => {
-        axios.get(`${baseURL}/getLegoKit/${legoKitName.value}`)
-            .then(res => {
-                const LegoKit = res.data;
-                getByIdOutput.innerHTML = "";
-                renderLego(LegoKit, getByIdOutput);
-            }).catch(err => console.log(err));
-
 }
+
+// const getByKitName = () => {
+//     axios.get(`${baseURL}/getByKitName/${kitName.value}`)
+//         .then(res => {
+//             const LegoKit = res.data;
+//             getByNameOutput.innerHTML = "";
+//             renderLego(LegoKit, getByNameOutput);
+//         }).catch(err => console.log(err));
+//}
 
 document.querySelector("section#postSection > form").addEventListener('submit', (e) => {
     e.preventDefault(); // stops the form submitting in the default way
