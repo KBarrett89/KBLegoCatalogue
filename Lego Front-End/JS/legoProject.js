@@ -31,32 +31,59 @@ const getAllLegoKits = () => {
 
 
 const renderLego = (legoKit, outputDiv) => {
-    const newLegoKit = document.createElement('div');
+    const newLegoKit = document.createElement('form');
     newLegoKit.classList.add("col");
     newLegoKit.classList.add("card");
 
-    const seriesName = document.createElement("p");
-    seriesName.innerText = `Series Name: ${legoKit.seriesName}`;
+    const seriesName = document.createElement("label");
+    seriesName.innerText = "Series Name:";
     newLegoKit.appendChild(seriesName);
+    const seriesNameTextBox = document.createElement("input");
+    seriesNameTextBox.type = "text";
+    seriesNameTextBox.value = legoKit.seriesName;
+    newLegoKit.appendChild(seriesNameTextBox);
 
-    const kitNumber = document.createElement("p");
-    kitNumber.innerText = `Kit Number: ${legoKit.kitNumber}`;
+
+    const kitNumber = document.createElement("label");
+    kitNumber.innerText = `Kit Number:`;
     newLegoKit.appendChild(kitNumber);
+    const seriesKitNumBox = document.createElement("input");
+    seriesKitNumBox.type = "number";
+    seriesKitNumBox.value = legoKit.kitNumber;
+    newLegoKit.appendChild(seriesKitNumBox);
 
-    const kitName = document.createElement("p");
-    kitName.innerText = `Kit Name: ${legoKit.kitName}`;
+
+    const kitName = document.createElement("label");
+    kitName.innerText = `Kit Name:`;
     newLegoKit.appendChild(kitName);
+    const seriesKitNameBox = document.createElement("input");
+    seriesKitNameBox.type = "text";
+    seriesKitNameBox.value = legoKit.kitName;
+    newLegoKit.appendChild(seriesKitNameBox);
 
-    const releaseYear = document.createElement("p");
-    releaseYear.innerText = `Release Year: ${legoKit.releaseYear}`;
+
+    const releaseYear = document.createElement("label");
+    releaseYear.innerText = `Release Year:`;
     newLegoKit.appendChild(releaseYear);
+    const seriesreleaseYearBox = document.createElement("input");
+    seriesreleaseYearBox.type = "number";
+    seriesreleaseYearBox.value = legoKit.releaseYear;
+    newLegoKit.appendChild(seriesreleaseYearBox);
+
+
+    const updateButton = document.createElement('submit');
+    updateButton.innerText = "UPDATE";
+    updateButton.classList.add("btn", "btn-primary");
+    updateButton.addEventListener('click', () => replaceLegoKit(legoKit.id))
+    newLegoKit.appendChild(updateButton);
+
 
     const deleteButton = document.createElement('button');
     deleteButton.innerText = "DELETE";
     deleteButton.classList.add("btn", "btn-primary");
     deleteButton.addEventListener('click', () => deleteLegoKit(legoKit.id))
-
     newLegoKit.appendChild(deleteButton);
+
 
     outputDiv.appendChild(newLegoKit);
 
