@@ -15,6 +15,7 @@ const getByIdOutput = document.querySelector("#getByIdOutput");
 
 
 const legoId = document.querySelector("#LegoId");
+
 const getAllLegoKits = () => {
     axios.get(`${baseURL}/getAllLegoKits`)
         .then(res => {
@@ -70,15 +71,13 @@ const deleteLegoKit = id => {
 }
 
 const getLegoKitById = () => {
-    axios.get(`${baseURL}/getLego/${LegoKitId.value}`)
+    axios.get(`${baseURL}/getLegoKit/${legoId.value}`)
         .then(res => {
             const LegoKit = res.data;
             getByIdOutput.innerHTML = "";
-            renderLeogKit(LegoKit, getByIdOutput);
+            renderLego(LegoKit, getByIdOutput);
         }).catch(err => console.log(err));
 }
-
-document.querySelector("section#getByIdSection > button").addEventListener('click', getLegoKitById);
 
 document.querySelector("section#postSection > form").addEventListener('submit', (e) => {
     e.preventDefault(); // stops the form submitting in the default way
