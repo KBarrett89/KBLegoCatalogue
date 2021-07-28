@@ -32,6 +32,7 @@ const getAllLegoKits = () => {
 
 const renderLego = (legoKit, outputDiv) => {
     const newLegoKit = document.createElement('div');
+    newLegoKit.classList.add("card");
 
     const seriesName = document.createElement("p");
     seriesName.innerText = `Series Name: ${legoKit.seriesName}`;
