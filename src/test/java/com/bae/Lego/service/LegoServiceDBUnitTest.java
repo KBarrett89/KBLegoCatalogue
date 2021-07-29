@@ -89,12 +89,23 @@ public class LegoServiceDBUnitTest {
 	}
 
 	@Test
-	void testDelete() {
+	void testDeleteSucceeds() {
 		int id = 1;
 
 		Mockito.when(this.repo.existsById(id)).thenReturn(false);
 
-		assertThat(this.service.deleteLegoKit(id)).isEqualTo("Not deleted: " + id);
+		assertThat(this.service.deleteLegoKit(id)).isEqualTo("Deleted: " + id);
+
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+	}
+
+	@Test
+	void testDeleteFails() {
+		int id = 1;
+
+		Mockito.when(this.repo.existsById(id)).thenReturn(true);
+
+		assertThat(this.service.deleteLegoKit(id)).isEqualTo("Not Deleted: " + id);
 
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 	}
