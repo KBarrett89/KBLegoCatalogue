@@ -3,10 +3,10 @@
 const baseURL = "http://localhost:8080";
 
 axios.get(`${baseURL}/`)
-    .then(res => { // handle response with callback
+    .then(res => { 
         console.log(res);
         console.log("DATA: ", res.data);
-    }).catch(err => console.log(err)); // handle error
+    }).catch(err => console.log(err)); 
 
 console.log("Have we got a response yet?");
 
@@ -22,7 +22,7 @@ const getAllLegoKits = () => {
         .then(res => {
             const lego = res.data;
 
-            getAllOutput.innerHTML = ""; //blanks an element
+            getAllOutput.innerHTML = ""; 
 
 
             lego.forEach(legoKit => renderLego(legoKit, getAllOutput));
@@ -30,9 +30,9 @@ const getAllLegoKits = () => {
 }
 
 const replaceLegoKit = (e, id) => {
-    e.preventDefault(); // stops the form submitting in the default way
+    e.preventDefault(); 
 
-    console.log("in here"); //testing these functions are called
+    console.log("in here"); 
     console.log(e);
 
     const form = e.target;
@@ -59,7 +59,7 @@ const renderLego = (legoKit, outputDiv) => {
     const deleteButton = document.createElement('button');
     deleteButton.addEventListener('click', () => deleteLegoKit(legoKit.id));
     const updateButton = document.createElement("button");
-    //updateButton.addEventListener('click', (e) => replaceLegoKit(legoId, e));
+
     newLegoKit.classList.add("col");
     newLegoKit.classList.add("card");
     console.log(legoKit);
@@ -142,17 +142,8 @@ const getLegoKitById = () => {
 
 }
 
-// const getByKitName = () => {
-//     axios.get(`${baseURL}/getByKitName/${kitName.value}`)
-//         .then(res => {
-//             const LegoKit = res.data;
-//             getByNameOutput.innerHTML = "";
-//             renderLego(LegoKit, getByNameOutput);
-//         }).catch(err => console.log(err));
-//}
-
 document.querySelector("section#postSection > form").addEventListener('submit', (e) => {
-    e.preventDefault(); // stops the form submitting in the default way
+    e.preventDefault(); 
 
     console.log("THIS: ", this);
     console.log("kitNumber: ", this.kitNumber);
@@ -173,8 +164,8 @@ document.querySelector("section#postSection > form").addEventListener('submit', 
             console.log(res);
             getAllLegoKits();
 
-            form.reset(); //resets form
-            form.seriesName.focus(); // selects the name input
+            form.reset(); 
+            form.seriesName.focus(); 
         }).catch(err => console.log(err));
 });
 

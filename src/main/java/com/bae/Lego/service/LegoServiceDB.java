@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.bae.Lego.data.Lego;
 import com.bae.Lego.data.LegoRepo;
 
-@Service // future functionality - don't use
-@Primary // tells Spring just to make this one
+@Service
+@Primary
 public class LegoServiceDB implements LegoKitService {
 
 	private LegoRepo repo;
@@ -42,19 +42,18 @@ public class LegoServiceDB implements LegoKitService {
 
 	@Override
 	public Lego replaceLegoKit(int id, Lego newlegoKit) {
-		// TODO Auto-generated method stub
+
 		Lego found = this.repo.findById(id).get();
 
 		System.out.println("FOUND: " + found);
 
-		// modify record
 		found.setSeriesName(newlegoKit.getSeriesName());
 		found.setKitNumber(newlegoKit.getKitNumber());
 		found.setKitName(newlegoKit.getKitName());
 		found.setReleaseYear(newlegoKit.getReleaseYear());
 
 		System.out.println("FOUND AFTER UPDATE: " + found);
-		// save it back to overwrite it
+
 		Lego updated = this.repo.save(found);
 		System.out.println("UPDATED: " + updated);
 		return updated;
