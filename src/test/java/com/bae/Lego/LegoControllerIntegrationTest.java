@@ -51,7 +51,7 @@ public class LegoControllerIntegrationTest {
 		System.out.println(testLeg);
 		System.out.println(testLegAsJSON);
 
-		RequestBuilder request = post("/CreateLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
+		RequestBuilder request = post("/createLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
 
 		ResultMatcher checkStatus = status().is(201);
 
