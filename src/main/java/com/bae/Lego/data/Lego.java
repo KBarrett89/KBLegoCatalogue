@@ -7,10 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // tells spring that this class represents a table in the database
+@Entity
 public class Lego {
 
-	@Id // Primary Key
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 

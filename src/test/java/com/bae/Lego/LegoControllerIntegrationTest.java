@@ -25,46 +25,42 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import com.bae.Lego.data.Lego;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // try random ports until it finds a free one
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 
-//loads both sql scripts from the resources folder and executes them BEFORE each test
 @Sql(scripts = { "classpath:Lego-schema.sql",
 		"classpath:Lego-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-@ActiveProfiles("test") // setsprofile for the test class
+@ActiveProfiles("test")
 
 public class LegoControllerIntegrationTest {
 
-	@Autowired // tells Spring to inject the MockMVC object into this class
+	@Autowired
 	private MockMvc mockMVC;
 
 	@Autowired
-	private ObjectMapper mapper; // yanks the class Spring uses to convert java to JSON
+	private ObjectMapper mapper;
 
 	@Test
 	void testCreate() throws Exception {
 
 		Lego testLeg = new Lego("Disney", 1234, "Cinderella's Castle", 2019);
-		// covert to json
+
 		String testLegAsJSON = this.mapper.writeValueAsString(testLeg);
 
 		System.out.println(testLeg);
 		System.out.println(testLegAsJSON);
 
-		// body, method, address and the content-type header
-		RequestBuilder request = post("/createLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
-
-		// check the response body and status
+		RequestBuilder request = post("/CreateLegoKit").contentType(MediaType.APPLICATION_JSON).content(testLegAsJSON);
 
 		ResultMatcher checkStatus = status().is(201);
 
 		Lego testCreatedLeg = new Lego("Disney", 1234, "Cinderella's Castle", 2019);
-		testCreatedLeg.setId(2); // due to auto_increment
+		testCreatedLeg.setId(2);
 		String testCreatedLegAsJSON = this.mapper.writeValueAsString(testCreatedLeg);
 
 		ResultMatcher checkBody = content().json(testCreatedLegAsJSON);
-		// send request and check status and body
+
 		this.mockMVC.perform(request).andExpect(checkStatus).andExpect(checkBody);
 	}
 
@@ -118,10 +114,9 @@ public class LegoControllerIntegrationTest {
 
 	@Test
 	void testDelete() throws Exception {
-		// create request
+
 		RequestBuilder request = delete("/deleteLegoKit/1");
 
-		// check response
 		ResultMatcher checkStatus = status().is(204);
 		ResultMatcher checkBody = content().string("Deleted: 1");
 
