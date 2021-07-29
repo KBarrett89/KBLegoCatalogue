@@ -19,10 +19,10 @@ import com.bae.Lego.data.LegoRepo;
 @ActiveProfiles("test")
 public class LegoServiceDBUnitTest {
 
-	@Autowired // injects the actual service from the context
+	@Autowired
 	private LegoServiceDB service;
 
-	@MockBean // tells Spring to make a 'fake' LegoRepo that we can program
+	@MockBean
 	private LegoRepo repo;
 
 	@Test
@@ -70,18 +70,17 @@ public class LegoServiceDBUnitTest {
 
 	@Test
 	void testUpdate() {
-		// GIVEN
+
 		int id = 1;
 
 		Lego testLego = new Lego(id, "Friends", 9844, "Beach House", 2020); // returned by FindById
 		Lego testNewLego = new Lego(id, "Ninjago", 3776, "Karate Fight", 2017); // new kit date
 
-		// WHEN
 		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(testLego)); // don't worry about this for now tbh
 		Mockito.when(this.repo.save(new Lego(id, "Ninjago", 3776, "Karate Fight", 2017))).thenReturn(testNewLego);
 
 		Lego actual = this.service.replaceLegoKit(id, testNewLego);
-		// THEN
+
 		assertThat(actual).isEqualTo(testNewLego);
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
